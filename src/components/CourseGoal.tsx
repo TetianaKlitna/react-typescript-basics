@@ -1,34 +1,16 @@
-import type { PropsWithChildren } from 'react';
+import type { FC } from 'react';
+import type { CourseGoalTypeProps } from '../interfaces/CourseGoalType';
 
-// type CourseGoalType = {
-//   title: string;
-//   children: ReactNode;
-// };
-
-// const CourseGoal:FC<CourseGoalType> = ({ title, children }) => {
-//   return (
-//     <article>
-//       <div>
-//         <h2>{title}</h2>
-//         {children}
-//       </div>
-//       <button>Delete</button>
-//     </article>
-//   );
-// };
-
-type CourseGoalType = PropsWithChildren<{ title: string }>;
-
-function CourseGoal({ title, children }: CourseGoalType) {
+const CourseGoal: FC<CourseGoalTypeProps> = ({ goal, onDelete, children }) => {
   return (
     <article>
       <div>
-        <h2>{title}</h2>
+        <h2>{goal.title}</h2>
         {children}
       </div>
-      <button>Delete</button>
+      <button onClick={() => onDelete(goal.id)}>Delete</button>
     </article>
   );
-}
+};
 
 export default CourseGoal;

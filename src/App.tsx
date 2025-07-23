@@ -2,7 +2,7 @@ import './App.css';
 import Header from './components/Header';
 import GoalsImg from './assets/goals.jpg';
 import CourseGoalList from './components/CourseGoalList';
-import { type CourseGoalType } from './types/CourseGoalType';
+import type { CourseGoalType } from './interfaces/CourseGoalType';
 import { useState } from 'react';
 
 function App() {
@@ -11,11 +11,13 @@ function App() {
     const newGoal: CourseGoalType = {
       title: 'Learn React + TypeScript',
       description: 'Learn it from grown up',
-      id: goals.length,
+      id: new Date().getTime(),
     };
     setGoals((prevGoals) => [...prevGoals, newGoal]);
   };
-
+  const handleDeleteGoal = (id: number) => {
+    setGoals((prevGoals) => prevGoals.filter((goal) => goal.id !== id));
+  };
   return (
     <main>
       <Header
@@ -29,7 +31,7 @@ function App() {
         <p>Your Course Goals:</p>
       </Header>
       <button onClick={handleAddGoal}>Add Goal</button>
-      <CourseGoalList goals={goals} />
+      <CourseGoalList goals={goals} onDelete={handleDeleteGoal} />
     </main>
   );
 }
