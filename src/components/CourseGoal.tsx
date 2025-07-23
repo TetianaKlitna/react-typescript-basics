@@ -1,5 +1,11 @@
-import type { FC } from 'react';
-import type { CourseGoalTypeProps } from '../interfaces/CourseGoalType';
+import type { FC, ReactNode } from 'react';
+import type { CourseGoalType } from '../interfaces/CourseGoalType';
+
+interface CourseGoalTypeProps {
+  goal: CourseGoalType;
+  children: ReactNode;
+  onDelete: (id: number) => void;
+}
 
 const CourseGoal: FC<CourseGoalTypeProps> = ({ goal, onDelete, children }) => {
   return (

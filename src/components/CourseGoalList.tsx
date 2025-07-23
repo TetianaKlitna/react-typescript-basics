@@ -1,7 +1,11 @@
 import CourseGoal from './CourseGoal';
-import type { CourseGoalListTypeProps } from '../interfaces/CourseGoalListType';
+import type { CourseGoalListType } from '../interfaces/CourseGoalListType';
 import type { CourseGoalType } from '../interfaces/CourseGoalType';
 import type { FC } from 'react';
+
+interface CourseGoalListTypeProps extends CourseGoalListType {
+  onDelete: (id: number) => void;
+}
 
 const CourseGoalList: FC<CourseGoalListTypeProps> = ({ goals, onDelete }) => {
   return (
